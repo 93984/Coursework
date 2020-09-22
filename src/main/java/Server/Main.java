@@ -1,5 +1,5 @@
 package Server;
 
 public class Main {
-    system.out.println("Hello world")
+    System.out.println("Hello world")
 }

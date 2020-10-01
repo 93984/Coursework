@@ -1,18 +1,42 @@
-
-function score(total)
+public static void score(total) {                                       //maybe?//
     maxScore = 750;
     maxSeconds = 3*60;
     x = 0;
-    while TRUE:
-        x += 0.02
-        time.sleep(0.02)
-        if submit button onclick then
-            if x > 180 then
-                return total + 1
-            else
-                points = int(maxScore*(maxScore^(-x/maxSeconds)))
-                return total + points
-
+    while true {
+        x += 0.02;
+        time.sleep(0.02);                                                           //java equivalent//
+        if (submit button onclick) {                                                //java equivalent//
+            if (x > 180) {
+                return total + 1;
+            } else {
+                points = int(maxScore*(maxScore^(-x/maxSeconds)))                   //powers?//
+                return total + points;
+        }
+    }
+}
 total = 0;
 System.out.println(score(total));
 total += score(total);
+
+
+=====================================================================================================================================
+
+
+public static void end(total, word, attempts) {                                     //maybe?//
+	if (attempts >= 16) {
+		System.out.println(“Sorry, you did not guess ” word + “ in enough tries”);
+	} else {
+		maxScore = 750;
+        maxAttempts = 16
+		total += maxScore*(maxAttempts-attempts+1);
+		System.out.println(“Well done, you guessed ” word + “ in ” + attempts + “ tries”);
+		System.out.println(“Total points: ” + points);
+		for (int i = 0, i >= 9, i++) {                                              //for loop//
+			if (total > highscores[i]) {
+				UPDATE DATABASE;                                                    //java equivalent//
+				REMOVE highscores[9]                                                //java equivalent//
+				System.out.println(“You are number ” i+1 + “ on the leaderboard”);
+            }
+        }
+    }
+}

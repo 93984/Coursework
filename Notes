@@ -1,4 +1,4 @@
-public static void score(total) {                                       //maybe?//
+public static void score(total) {                                                   //maybe?//
     maxScore = 750;
     maxSeconds = 3*60;
     x = 0;

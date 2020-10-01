@@ -22,7 +22,7 @@ total += score(total);
 =====================================================================================================================================
 
 
-public static void end(total, word, attempts) {                                    				//define function//
+public static void end(total, word, attempts) {                                    				    //define function//
 	if (attempts >= 16) {
 		System.out.println(“Sorry, you did not guess ” word + “ in enough tries”);
 	} else {
@@ -31,10 +31,10 @@ public static void end(total, word, attempts) {                                 
 		total += maxScore*(maxAttempts-attempts+1);
 		System.out.println(“Well done, you guessed ” word + “ in ” + attempts + “ tries”);
 		System.out.println(“Total points: ” + points);
-		for (int i = 0, i <= 9, i++) {                                              			//for loop//
-			if (total > LEADERBOARDS[i]) {                                          		//java equivalent//
-				UPDATE LEADERBOARDS;                                                		//java equivalent//
-				REMOVE LEADERBOARDS[9]                                              		//java equivalent//
+		for (int i = 0, i <= 9, i++) {                                              		        //for loop//
+			if (total > LEADERBOARDS[i]) {                                          		        //java equivalent//
+				UPDATE LEADERBOARDS;                                                		        //java equivalent//
+				REMOVE LEADERBOARDS[9]                                              		        //java equivalent//
 				System.out.println(“You are number ” i+1 + “ on the leaderboard”);
             }
         }
@@ -49,8 +49,8 @@ OPEN LEADERBOARDS??
 ==================================================================================================================================
 
 
-public static void numBlacks(x, y) {										//define function//
-	for (int i = 0, i <= word.length - 1, i++) {								//for loop//
+public static void numBlacks(x, y) {										                        //define function//
+	for (int i = 0, i <= word.length - 1, i++) {								                    //for loop//
 		if (y.substring(i) == x.substring(i)) {
 			blacks += 1;
 		}
@@ -61,12 +61,12 @@ public static void numBlacks(x, y) {										//define function//
 ==================================================================================================================================
 
 
-public static void numWhites(x, y) {										//define function//
-	for (int i = 0, i <= word.length - 1, i++) {								//for loop//
-		for (int j = 0, j <= word.length - 1, j++) {							//for loop//
+public static void numWhites(x, y) {										                        //define function//
+	for (int i = 0, i <= word.length - 1, i++) {								                    //for loop//
+		for (int j = 0, j <= word.length - 1, j++) {							                    //for loop//
 			if (y.substring(i) != x.substring(i) && y.substring(i) == x.substring(j) && i != j) {	//ERROR TEST THIS//
 				whites += 1;
-				x.substring(j) = NULL;								//java equivalent//			
+				x.substring(j) = NULL;								                                //java equivalent//
 			}
 		}
 	}
@@ -76,8 +76,8 @@ public static void numWhites(x, y) {										//define function//
 ==================================================================================================================================
 
 
-public static void lowercase(x)											//define function//
-	n = asc(x);												//java equivalent//
+public static void lowercase(x)											                            //define function//
+	n = asc(x);												                                        //java equivalent//
 	if (n >= 65 && n <= 90) {
 		n += 32;
 	} else if (n < 97 || n > 122) {

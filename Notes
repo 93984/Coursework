@@ -1,7 +1,7 @@
 public static void score(total) {                                                   //maybe?//
-    maxScore = 750;
-    maxSeconds = 3*60;
-    x = 0;
+    int maxScore = 750;
+    int maxSeconds = 3*60;
+    int x = 0;
     while true {
         x += 0.02;
         time.sleep(0.02);                                                           //java equivalent//
@@ -14,7 +14,7 @@ public static void score(total) {                                               
         }
     }
 }
-total = 0;
+int total = 0;
 System.out.println(score(total));
 total += score(total);
 
@@ -26,17 +26,21 @@ public static void end(total, word, attempts) {                                 
 	if (attempts >= 16) {
 		System.out.println(“Sorry, you did not guess ” word + “ in enough tries”);
 	} else {
-		maxScore = 750;
-        maxAttempts = 16
+		int maxScore = 750;
+        int maxAttempts = 16
 		total += maxScore*(maxAttempts-attempts+1);
 		System.out.println(“Well done, you guessed ” word + “ in ” + attempts + “ tries”);
 		System.out.println(“Total points: ” + points);
 		for (int i = 0, i >= 9, i++) {                                              //for loop//
-			if (total > highscores[i]) {
-				UPDATE DATABASE;                                                    //java equivalent//
-				REMOVE highscores[9]                                                //java equivalent//
+			if (total > LEADERBOARDS[i]) {                                          //java equivalent//
+				UPDATE LEADERBOARDS;                                                //java equivalent//
+				REMOVE LEADERBOARDS[9]                                              //java equivalent//
 				System.out.println(“You are number ” i+1 + “ on the leaderboard”);
             }
         }
     }
 }
+int total = 0;
+String word = "life";
+int attempts = 12;
+OPEN LEADERBOARDS??

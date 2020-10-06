@@ -16,14 +16,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        openDatabase("Databases.d.db3");
+        openDatabase("databases.d.db3");
         ResourceConfig config = new ResourceConfig();
         config.packages("controllers");
         config.register(MultiPartFeature.class);
         ServletHolder servlet = new ServletHolder(new ServletContainer(config));
         Server server = new Server(8081);
-        ServletContextHandler context = new ServletContextHandler(server, "/");
-        context.addServlet(servlet, "/*");
+        ServletContextHandler context = new ServletContextHandler(server,"/");
+        context.addServlet(servlet,"/*");
 
         try {
             server.start();

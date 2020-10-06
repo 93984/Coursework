@@ -43,12 +43,12 @@ public class Users{
     @GET
     @Path("get/{UserID}")
 
-    public String UsersGet(@PathParam("UserID") Integer UserID) {
+    public String UsersGet(@PathParam("UserID") String UserID) {
         System.out.println("Invoked Users.UsersGet() with UserID " + UserID);
 
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT UserName, Token FROM Users WHERE UserID = ?");
-            ps.setInt(1, UserID);
+            ps.setString(1, UserID);
             ResultSet results = ps.executeQuery();
             JSONObject response = new JSONObject();
 

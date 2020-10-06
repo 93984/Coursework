@@ -25,7 +25,7 @@ public class Users{
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, UserName FROM Users");
             ResultSet results = ps.executeQuery();
-            while (results.next()==true) {
+            while (results.next()) {
                 JSONObject row = new JSONObject();
                 row.put("UserID", results.getInt(1));
                 row.put("UserName", results.getString(2));

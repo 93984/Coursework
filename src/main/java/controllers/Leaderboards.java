@@ -25,7 +25,7 @@ public class Leaderboards{
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT Rank, UserID, Score FROM Leaderboards");
             ResultSet results = ps.executeQuery();
-            while (results.next()==true) {
+            while (results.next()) {
                 JSONObject row = new JSONObject();
                 row.put("Rank", results.getInt(1));
                 row.put("UserID", results.getString(2));

@@ -25,7 +25,7 @@ public class Words{
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT WordID, WordName FROM Words");
             ResultSet results = ps.executeQuery();
-            while (results.next()==true) {
+            while (results.next()) {
                 JSONObject row = new JSONObject();
                 row.put("WordID", results.getInt(1));
                 row.put("WordName", results.getString(2));

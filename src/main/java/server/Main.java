@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        openDatabase("databases.d.db3");
+        openDatabase("databases.db");
         ResourceConfig config = new ResourceConfig();
         config.packages("controllers");
         config.register(MultiPartFeature.class);

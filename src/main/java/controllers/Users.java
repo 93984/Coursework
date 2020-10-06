@@ -27,7 +27,7 @@ public class Users{
             ResultSet results = ps.executeQuery();
             while (results.next()) {
                 JSONObject row = new JSONObject();
-                row.put("UserID", results.getInt(1));
+                row.put("UserID", results.getString(1));
                 row.put("UserName", results.getString(2));
                 response.add(row);
             }

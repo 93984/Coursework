@@ -27,7 +27,7 @@ public class Words{
             ResultSet results = ps.executeQuery();
             while (results.next()) {
                 JSONObject row = new JSONObject();
-                row.put("WordID", results.getInt(1));
+                row.put("WordID", results.getString(1));
                 row.put("WordName", results.getString(2));
                 response.add(row);
             }

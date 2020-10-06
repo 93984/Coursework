@@ -43,7 +43,7 @@ public class Users{
             ps.setInt(1, UserID);
             ResultSet results = ps.executeQuery();
             JSONObject response = new JSONObject();
-            if (results.next()== true) {
+            if (results.next()) {
                 response.put("UserID", UserID);
                 response.put("UserName", results.getString(1));
                 response.put("Token", results.getInt(2));

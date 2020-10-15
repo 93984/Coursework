@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        openDatabase("databases.d.db3");
+        openDatabase();
         ResourceConfig config = new ResourceConfig();
         config.packages("controllers");
         config.register(MultiPartFeature.class);
@@ -34,13 +34,13 @@ public class Main {
         }
     }
 
-    public static void openDatabase(String dbFile) {
+    private static void openDatabase() {
 
         try {
             SQLiteConfig config = new SQLiteConfig();
             config.enforceForeignKeys(true);
             Class.forName("org.sqlite.JDBC");
-            db = DriverManager.getConnection("jdbc:sqlite:resources/" + dbFile, config.toProperties());
+            db = DriverManager.getConnection("jdbc:sqlite:resources/" + "databases.d.db3", config.toProperties());
             System.out.println("Database connection successfully established.");
         } catch (Exception exception) {
             System.out.println("Database connection error: " + exception.getMessage());

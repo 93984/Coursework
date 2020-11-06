@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="length=device-length, initial-scale=1">
+</head>
+
+<body>
+<title>Select a difficulty</title>
+<style>
+    body {
+        background-image: url('https://images.cooltext.com/5430853.png');
+        background-size: 2048px 1620px;
+        max-width: 100%;
+        height: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: darkmagenta
+    }
+
+    b {
+        color: white;
+        width: 75%;
+        max-width: 320px;
+        font-size: 48px;
+        height: auto;
+        text-align: center
+    }
+
+    button {
+        display: block;
+        width: 50%;
+        max-width: auto;
+        height: auto;
+        color: white;
+        font-size: 48px;
+        font-family: Verdana;
+        cursor: pointer;
+        text-align: center;
+        transition: 0.3s
+    }
+
+    button:hover {
+        opacity: 0.8
+    }
+
+    button:active {
+        transform: translateY(8px)
+    }
+
+    img {
+        max-width: 576px;
+        width: 50%;
+        height: auto
+    }
+
+    .center {
+        display: flex;
+        justify-content: center
+    }
+
+</style>
+<br><br>
+<div class="center"><b>Choose your difficulty</b></div>
+<br>
+<div class="center">
+    <button style="background-color: green"
+            onclick="document.location = 'main4.html'">
+        Easy (4 letters)</button></div>
+<div class="center">
+    <button style="background-color: orange"
+            onclick="document.location = 'main5.html'">
+        Medium (5 letters)</button></div>
+<div class="center">
+    <button style="background-color: orangered"
+            onclick="document.location = 'main6.html'">
+        Hard (6 letters)</button></div>
+<div class="center">
+    <button style="background-color: darkred"
+            onclick="document.location = 'main7.html'">
+        Very hard (7 letters)</button></div>
+<div class="center">
+    <button style="background-color: purple"
+            onclick="document.location = 'main8.html'">
+        Insane (8 letters)</button></div>
+<br>
+<div class="center">
+    <img src="https://images.cooltext.com/5430825.png"
+         width="240" height="135"
+         alt="  Word Breaker" /></div>

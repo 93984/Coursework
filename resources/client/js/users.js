@@ -1,6 +1,6 @@
 "use strict";
 function getUsersList() {
-    //debugger;
+    debugger;
     console.log("Invoked getUsersList()");                                                                              //console.log your BFF for debugging client side - also use debugger statement
     const url = "/users/list/";    		                                                                                // API method on web server will be in Users class, method list
     fetch(url, {
@@ -45,12 +45,7 @@ function getUser() {
 }
                                                                                                                         /*Add the form elements to index.html inside <body tags*/
 
-<form id="userDetails">
- User id: <input type="text" id="userID">
-</form>
-<button onClick='getUser();'>Run getUser</button>
-<div id="DisplayOneUser"/>
-<br>
+
 
                                                                                                                         /*addUser function to add a user to the database*/
 function addUser() {
@@ -71,13 +66,7 @@ function addUser() {
     });
 }
 
-                                                                                                                        /*Add the form elements to index.html inside <body tags*/
-<form id="InputUserDetails">
-    Username: <input type="text" name="userName">
-    Password: <input type="text" name="PassWord">
-    Skill Level: <input type="text" name="UserSkillLevel">
-</form>
-<button onClick='addUser();'>Add User</button>
+                                                                                                                        /*Add the form elements to index.html inside <body tags*
                                                                                                                         /*If you want two bits of data but there is no form, you can create a form and stick the values in eg:*/
 
 function postWeightAdd() {

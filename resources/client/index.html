@@ -1,10 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>HTML Demo</title>
-    Hello World!
-    <button>Click me!</button>
-    <p>Idk how HTML works</p>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="length=device-length, initial-scale=1">
 </head>
+
+<body>
+<title>Word Breaker</title>
+<style>
+    body {
+        background-image: url('https://images.cooltext.com/5430853.png');
+        background-size: 2048px 1620px;
+        width: 100%;
+        height: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: darkmagenta
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        border: None;
+        background-color: Transparent;
+        color: white;
+        font-size: 72px;
+        cursor: pointer;
+        font-family: Verdana;
+        text-align: center;
+        transition: 0.3s
+    }
+
+    button:hover {
+        opacity: 0.8
+    }
+
+    button:active {
+        transform: translateY(8px)
+    }
+
+    img {
+        max-width: 768;
+        width: 80%;
+        height: auto
+    }
+
+    .center {
+        display: flex;
+        justify-content: center
+    }
+
+    .content {
+        max-width: 720px;
+        margin: auto
+    }
+</style>
+
+<br>
+<div class="content center">
+    <img src="https://images.cooltext.com/5430825.png" width="720"></div>
+<br>
+<div class="content center">
+    <button onclick="document.location = 'difficulty.html'">Play Game</button></div>
+<div class="center">
+    <button onclick="document.location = 'instructions.html'">Instructions</button></div>
+<div class="content center">
+    <button onclick="document.location = 'settings.html'">Settings</button></div>
+<div class="content center">
+    <button onclick="document.location = 'admin.html'">Admin</button></div>
+</body>
 </html>

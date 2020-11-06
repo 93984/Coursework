@@ -24,8 +24,6 @@ function formatUsersList(myJSONArray){
     document.getElementById("UsersTable").innerHTML = dataHTML;
 }
 
-
-
 /*getUser() returns one row of data from the database using a GET and path parameter*/
 function getUser() {
     console.log("Invoked getUser()");                                                                                   //console.log your BFF for debugging client side
@@ -104,3 +102,44 @@ function postWeightAdd() {
     });
 }
 
+function UsersLogin() {
+    //debugger;
+    console.log("Invoked UsersLogin() ");
+    let url = "/users/login";
+    let formData = new FormData(document.getElementById('LoginForm'));
+    fetch(url, {
+        method: "POST",
+        body: formData,
+    }).then(response => {
+    return response.json();                 //now return that promise to JSON
+    }).then(response => {
+
+        if (response.hasOwnProperty("Error")) {
+            alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
+        } else {
+            Cookies.set("Token", response.Token);
+            Cookies.set("UserName", response.UserName);
+            window.open("index.html", "_self");       //open index.html in same tab
+        }
+    });
+}
+
+function UsersLogout() {
+    //debugger;
+    console.log("Invoked UsersLogout()");
+    let url = "/users/logout";
+    fetch(url, {
+        method: "POST"
+    }).then(response => {
+        return response.json();                 //now return that promise to JSON
+    }).then(response => {
+
+        if (response.hasOwnProperty("Error")) {
+            alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
+        } else {
+            Cookies.remove("Token", response.Token);    //UserName and Token are removed
+            Cookies.remove("UserName", response.UserName);
+            window.open("index.html", "_self");       //open index.html in same tab
+        }
+    });
+}

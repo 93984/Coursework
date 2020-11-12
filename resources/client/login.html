@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
+    <script src="/client/js/users.js"></script>
+</head>
+<br>
+<style>
+    body {
+        background-image: url('https://images.cooltext.com/5430853.png');
+        background-size: 2048px 1620px;
+        max-width: 100%;
+        height: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: darkmagenta
+    }
+
+    input {
+        width: 100%;;
+        font-size: 24px;
+        color: grey;
+        font-family: Verdana;
+        text-align: center;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        border: None;
+        background-color: Transparent;
+        color: white;
+        font-size: 48px;
+        cursor: pointer;
+        font-family: Verdana;
+        text-align: center;
+        transition: 0.3s
+    }
+
+    button:hover {
+        opacity: 0.8
+    }
+
+    button:active {
+        transform: translateY(8px)
+    }
+
+    img {
+        width: 720px;
+        height: auto
+    }
+
+    .center {
+        display: flex;
+        justify-content: center
+    }
+
+    .content {
+        max-width: 720px;
+        margin: auto
+    }
+</style>
+
+<form id="LoginForm">
+    <div class="content center">
+        <input type="text" name="UserName" id="UserName" size="48px">
+        <input type="password" name="PassWord" id="PassWord" size="24px">
+    </div>
+</form>
+
+<br>
+<div class="content center">
+    <button onclick="UsersLogin();">LOGIN</button></div>  <!--UsersLogin()in users.js-->
+
+
+</body>
+</html>

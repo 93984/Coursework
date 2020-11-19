@@ -4,7 +4,7 @@ public class AlgorithmTesting {
 
     public static int blacks (String word, String guess) {
         if (word.length() != guess.length()) {
-            return -1;
+            return -1;                                                      // the error bit may need changing
         } else {
             int blacks = 0;
             for (int i = 0; i < word.length(); i += 1) {
@@ -26,7 +26,7 @@ public class AlgorithmTesting {
             if (asc >= 65 && asc <= 90) {
                 asc += 32;
             } else if (asc < 97 || asc > 122) {
-                return "error";
+                return "error";                                             // the error bit may need changing
             }
             char c = (char) asc;
             lower.append(c);

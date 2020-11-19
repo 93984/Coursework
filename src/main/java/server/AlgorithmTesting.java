@@ -17,7 +17,16 @@ public class AlgorithmTesting {
     }
 
 
-
+    public static int whites (String word, String guess) {
+        int whites = 0;
+        for (int i = 0; i < word.length(); i += 1) {
+            char c = guess.charAt(i);
+            if (word.contains("c")) {
+                whites += 1;
+            }
+        }
+        return whites;
+    }
 
     public static String lowercase (String word) {
         StringBuilder lower = new StringBuilder();
@@ -38,15 +47,11 @@ public class AlgorithmTesting {
 
 
     public static void main(String[] args) {
-        System.out.println(lowercase("WORD"));
-        System.out.println(lowercase("Word"));
-        System.out.println(lowercase("WoRd"));
-        System.out.println(lowercase("word"));
-        System.out.println(lowercase("AaAa"));
-        System.out.println(lowercase("ZzZz"));
-        System.out.println(lowercase("W%RD"));
-        System.out.println(lowercase("W0RD"));
-        System.out.println(blacks("word", "door"));
-        System.out.println(blacks("word", "doors"));
+        System.out.println(whites("word", "wxxx"));
+        System.out.println(whites("word", "xwxx"));
+        System.out.println(whites("word", "xwxr"));
+        System.out.println(whites("word", "wrxx"));
+        System.out.println(whites("word", "xxxx"));
+        System.out.println(whites("word", "word"));
     }
 }

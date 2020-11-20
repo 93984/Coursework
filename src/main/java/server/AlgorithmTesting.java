@@ -4,7 +4,7 @@ public class AlgorithmTesting {
 
     public static int blacks (String word, String guess) {
         if (word.length() != guess.length()) {
-            return -1;                                                      // the error bit may need changing
+            return -1;
         } else {
             int blacks = 0;
             for (int i = 0; i < word.length(); i += 1) {
@@ -16,16 +16,14 @@ public class AlgorithmTesting {
         }
     }
 
-
-    public static int whites (String word, String guess) {
+    public static int whites (String word, String guess, int blacks) {
         int whites = 0;
         for (int i = 0; i < word.length(); i += 1) {
-            char c = guess.charAt(i);
-            if (word.contains("c")) {
+            if (word.contains("guess.charAt(i)")) {
                 whites += 1;
             }
         }
-        return whites;
+        return whites - blacks;
     }
 
     public static String lowercase (String word) {
@@ -36,22 +34,22 @@ public class AlgorithmTesting {
                 asc += 32;
             } else if (asc < 97 || asc > 122) {
                 return "error";                                             // the error bit may need changing
-            }
-            char c = (char) asc;
+            } char c = (char) asc;
             lower.append(c);
-        }
-        return lower.toString();
+        } return lower.toString();
     }
 
 
 
 
     public static void main(String[] args) {
-        System.out.println(whites("word", "wxxx"));
-        System.out.println(whites("word", "xwxx"));
-        System.out.println(whites("word", "xwxr"));
-        System.out.println(whites("word", "wrxx"));
-        System.out.println(whites("word", "xxxx"));
-        System.out.println(whites("word", "word"));
+        System.out.println(whites("word", "wxxx", 1));
+        System.out.println(whites("word", "xwxx", 0));
+        System.out.println(whites("word", "xwxr", 0));
+        System.out.println(whites("word", "wrxx", 1));
+        System.out.println(whites("word", "xxxx", 0));
+        System.out.println(whites("word", "word", 4));
+
+
     }
 }

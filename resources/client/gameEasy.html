@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Instructions</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="length=device-length, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Game - Easy</title>
 </head>
-
 <body>
 <style>
     body {
@@ -19,13 +16,24 @@
         background-color: darkmagenta
     }
 
-    text {
-        color: white;
-        width: 75%;
-        max-width: 320px;
-        font-size: 48px;
+    input {
+        width: auto;
+        font-size: 24px;
+        color: black;
+        font-family: Verdana;
+    }
+
+    button {
+        display: block;
+        width: auto;
         height: auto;
-        text-align: center
+        color: white;
+        background: black;
+        font-size: 48px;
+        font-family: Comic Sans;
+        cursor: pointer;
+        text-align: right;
+        transition: 0.3s
     }
 
     backButton {
@@ -41,29 +49,10 @@
         transition: 0.3s
     }
 
-    .center {
-        display: flex;
-        justify-content: center
-    }
-
 </style>
-<br><br>
-<div class="center"><text>Instructions</text></div>
-<br>
-<div class="center">
-    <img src="https://images.cooltext.com/5482794.png"
-         width="1280" height="1024"
-         alt="Instructions" /></div>
-<div class="center">
-    <img src="https://images.cooltext.com/5430825.png"
-         width="240" height="135"
-         alt="Word Breaker" /></div>
+
+</body>
+<button onclick="document.location = 'index.html'">SUMBIT</button></div>
 <div class="center">
     <backButton onclick="document.location = 'index.html'">Back</backButton></div>
-
-
-
-
-
-
-
+</html>

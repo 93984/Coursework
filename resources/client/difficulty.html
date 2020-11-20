@@ -19,7 +19,7 @@
         background-color: darkmagenta
     }
 
-    b {
+    text {
         color: white;
         width: 75%;
         max-width: 320px;
@@ -41,11 +41,32 @@
         transition: 0.3s
     }
 
+    backButton {
+        display: block;
+        width: auto;
+        border: None;
+        background-color: Transparent;
+        color: white;
+        font-size: 36px;
+        cursor: pointer;
+        font-family: Verdana;
+        text-align: center;
+        transition: 0.3s
+    }
+
     button:hover {
         opacity: 0.8
     }
 
     button:active {
+        transform: translateY(8px)
+    }
+
+    backButton:hover {
+        opacity: 0.8
+    }
+
+    backButton:active {
         transform: translateY(8px)
     }
 
@@ -62,30 +83,32 @@
 
 </style>
 <br><br>
-<div class="center"><b>Choose your difficulty</b></div>
+<div class="center"><text>Choose your difficulty</text></div>
 <br>
 <div class="center">
     <button style="background-color: green"
-            onclick="document.location = 'main4.html'">
+            onclick="document.location = 'gameEasy.html'">
         Easy (4 letters)</button></div>
 <div class="center">
     <button style="background-color: orange"
-            onclick="document.location = 'main5.html'">
+            onclick="document.location = 'gameMedium.html'">
         Medium (5 letters)</button></div>
 <div class="center">
     <button style="background-color: orangered"
-            onclick="document.location = 'main6.html'">
+            onclick="document.location = 'gameHard.html'">
         Hard (6 letters)</button></div>
 <div class="center">
     <button style="background-color: darkred"
-            onclick="document.location = 'main7.html'">
+            onclick="document.location = 'gameVeryHard.html'">
         Very hard (7 letters)</button></div>
 <div class="center">
     <button style="background-color: purple"
-            onclick="document.location = 'main8.html'">
+            onclick="document.location = 'gameInsane.html'">
         Insane (8 letters)</button></div>
 <br>
 <div class="center">
     <img src="https://images.cooltext.com/5430825.png"
          width="240" height="135"
          alt="  Word Breaker" /></div>
+<div class="center">
+    <backButton onclick="document.location = 'index.html'">Back</backButton></div>

@@ -19,7 +19,7 @@
         background-color: darkmagenta
     }
 
-    b {
+    text {
         color: white;
         width: 75%;
         max-width: 320px;
@@ -33,6 +33,19 @@
         height: auto
     }
 
+    backButton {
+        display: block;
+        width: auto;
+        border: None;
+        background-color: Transparent;
+        color: white;
+        font-size: 36px;
+        cursor: pointer;
+        font-family: Verdana;
+        text-align: center;
+        transition: 0.3s
+    }
+
     .center {
         display: flex;
         justify-content: center
@@ -40,9 +53,11 @@
 
 </style>
 <br><br>
-<div class="center"><b>Settings</b></div>
+<div class="center"><text>Settings</text></div>
 <br>
 <div class="center">
     <img src="https://images.cooltext.com/5430825.png"
          width="240" height="135"
-         alt="  Word Breaker" /></div>
+         alt="Word Breaker" /></div>
+<div class="center">
+    <backButton onclick="document.location = 'index.html'">Back</backButton></div>

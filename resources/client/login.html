@@ -19,7 +19,6 @@
     }
 
     input {
-        width: 100%;;
         font-size: 24px;
         color: grey;
         font-family: Verdana;
@@ -52,6 +51,19 @@
         height: auto
     }
 
+    backButton {
+        display: block;
+        width: auto;
+        border: None;
+        background-color: Transparent;
+        color: white;
+        font-size: 36px;
+        cursor: pointer;
+        font-family: Verdana;
+        text-align: center;
+        transition: 0.3s
+    }
+
     .center {
         display: flex;
         justify-content: center
@@ -65,15 +77,16 @@
 
 <form id="LoginForm">
     <div class="content center">
-        <input type="text" name="UserName" id="UserName" size="48px">
-        <input type="password" name="PassWord" id="PassWord" size="24px">
+        <input type="text" name="UserName" id="UserName" length="24px">
+        <input type="password" name="PassWord" id="PassWord" length="12px">
     </div>
 </form>
 
 <br>
 <div class="content center">
     <button onclick="UsersLogin();">LOGIN</button></div>  <!--UsersLogin()in users.js-->
-
+<div class="center">
+    <backButton onclick="document.location = 'index.html'">Back</backButton></div>
 
 </body>
 </html>

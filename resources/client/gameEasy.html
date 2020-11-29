@@ -17,42 +17,59 @@
     }
 
     input {
-        width: auto;
-        font-size: 24px;
-        color: black;
-        font-family: Verdana;
+        width: 116px;
+        font-size: 48px;
+        background: #404040;
+        color: white;
+        font-family: "Courier New";
     }
 
     button {
         display: block;
-        width: auto;
+        width: 20%;
         height: auto;
         color: white;
         background: black;
         font-size: 48px;
         font-family: Comic Sans;
         cursor: pointer;
-        text-align: right;
         transition: 0.3s
     }
 
-    backButton {
+    giveUpButton {
         display: block;
-        width: auto;
+        width: 10%;
         border: None;
-        background-color: Transparent;
+        background-color: Red;
         color: white;
-        font-size: 36px;
+        font-size: 24px;
         cursor: pointer;
         font-family: Verdana;
         text-align: center;
         transition: 0.3s
     }
 
+    .center {
+        display: flex;
+        justify-content: center
+    }
+
+    .content {
+        max-width: 720px;
+        margin: auto
+    }
+
 </style>
 
 </body>
-<button onclick="document.location = 'index.html'">SUMBIT</button></div>
+<p align="right">
+    <button>SCORE</button></div>
+    <button>SUMBIT</button></div>
+</p>
+<input></input>
 <div class="center">
-    <backButton onclick="document.location = 'index.html'">Back</backButton></div>
+    <img src="https://images.cooltext.com/5430825.png"
+         alt="Word Breaker" /></div>
+<div class="center">
+    <giveUpButton onclick="document.location = 'gameOver.html'">GIVE UP?</giveUpButton></div>
 </html>

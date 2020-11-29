@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Main Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="length=device-length, initial-scale=1">
 </head>
 
 <body>
+<title>Leaderboards</title>
 <style>
     body {
         background-image: url('https://images.cooltext.com/5430853.png');
@@ -19,7 +19,21 @@
         background-color: darkmagenta
     }
 
-    button {
+    text {
+        color: white;
+        width: 75%;
+        max-width: 320px;
+        font-size: 48px;
+        height: auto;
+        text-align: center
+    }
+
+    img {
+        width: 25%;
+        height: auto
+    }
+
+    backButton {
         display: block;
         border: None;
         background-color: Transparent;
@@ -31,40 +45,17 @@
         transition: 0.3s
     }
 
-    button:hover {
-        opacity: 0.8
-    }
-
-    button:active {
-        transform: translateY(8px)
-    }
-
-    img {
-        width: 50%;
-        height: auto
-    }
-
     .center {
         display: flex;
         justify-content: center
     }
 
 </style>
-
+<br><br>
+<div class="center"><text>Leaderboards</text></div>
 <br>
 <div class="center">
     <img src="https://images.cooltext.com/5430825.png"
          alt="Word Breaker" /></div>
-<br>
-<div class="content center">
-    <button onclick="document.location = 'difficulty.html'">Play Game</button></div>
 <div class="center">
-    <button onclick="document.location = 'leaderboards.html'">Leaderboards</button></div>
-<div class="center">
-    <button onclick="document.location = 'instructions.html'">Instructions</button></div>
-<div class="content center">
-    <button onclick="document.location = 'settings.html'">Settings</button></div>
-<div class="content center">
-    <button onclick="document.location = 'login.html'">Admin</button></div>
-</body>
-</html>
+    <backButton onclick="document.location = 'index.html'">Back</backButton></div>

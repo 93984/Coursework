@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Main Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="length=device-length, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Game End</title>
 </head>
-
-<body>
 <style>
     body {
         background-image: url('https://images.cooltext.com/5430853.png');
@@ -19,8 +15,30 @@
         background-color: darkmagenta
     }
 
+    text {
+        color: white;
+        width: 50%;
+        font-size: 48px;
+        height: auto;
+        text-align: center
+    }
+
     button {
         display: block;
+        width: 50%;
+        max-width: auto;
+        height: auto;
+        color: white;
+        font-size: 48px;
+        font-family: Verdana;
+        cursor: pointer;
+        text-align: center;
+        transition: 0.3s
+    }
+
+    backButton {
+        display: block;
+        width: auto;
         border: None;
         background-color: Transparent;
         color: white;
@@ -39,8 +57,16 @@
         transform: translateY(8px)
     }
 
+    backButton:hover {
+        opacity: 0.8
+    }
+
+    backButton:active {
+        transform: translateY(8px)
+    }
+
     img {
-        width: 50%;
+        width: 25%;
         height: auto
     }
 
@@ -50,21 +76,11 @@
     }
 
 </style>
-
-<br>
+<body>
 <div class="center">
     <img src="https://images.cooltext.com/5430825.png"
          alt="Word Breaker" /></div>
-<br>
-<div class="content center">
-    <button onclick="document.location = 'difficulty.html'">Play Game</button></div>
 <div class="center">
-    <button onclick="document.location = 'leaderboards.html'">Leaderboards</button></div>
-<div class="center">
-    <button onclick="document.location = 'instructions.html'">Instructions</button></div>
-<div class="content center">
-    <button onclick="document.location = 'settings.html'">Settings</button></div>
-<div class="content center">
-    <button onclick="document.location = 'login.html'">Admin</button></div>
+    <backButton onclick="document.location = 'index.html'">Back</backButton></div>
 </body>
 </html>

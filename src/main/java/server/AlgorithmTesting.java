@@ -1,5 +1,7 @@
 package server;
 
+import java.util.Scanner;
+
 public class AlgorithmTesting {
 
     public static int blacks (String word, String guess) {
@@ -39,17 +41,26 @@ public class AlgorithmTesting {
         } return lower.toString();
     }
 
-
+    public static int score(int attempts, int time) {
+        int max = 42000;
+        int points = max;
+        int deduction = 1000;
+        int increase = 100;
+        for (int i = 1; i < attempts; i++) {
+            points -= deduction + (increase * i);
+        }
+        return points - (15 * time);
+    }
 
 
     public static void main(String[] args) {
-        System.out.println(whites("word", "wxxx", 1));
-        System.out.println(whites("word", "xwxx", 0));
-        System.out.println(whites("word", "xwxr", 0));
-        System.out.println(whites("word", "wrxx", 1));
-        System.out.println(whites("word", "xxxx", 0));
-        System.out.println(whites("word", "word", 4));
-
-
+        Scanner input = new Scanner(System.in);
+        while (true) {
+            System.out.println("Enter attempts: ");
+            int x = input.nextInt();
+            System.out.println("Enter time in seconds: ");
+            int y = input.nextInt();
+            System.out.println(score(x,y));
+        }
     }
 }

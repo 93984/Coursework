@@ -42,7 +42,7 @@ public class Words {
     @Path("get/{WordID}")
 
     public String WordsGet(@PathParam("WordID") String WordID) {
-        System.out.println("Invoked Words.WordssGet() with WordID " + WordID);
+        System.out.println("Invoked Words.WordsGet() with WordID " + WordID);
 
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT WordName, Token FROM Words WHERE WordID = ?");

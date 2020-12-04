@@ -62,6 +62,53 @@ public class Words {
         }
     }
 
+    @GET
+    @Path("random/{length}")
+    public String RandomWord(@PathParam("length") int wordLength) {
+
+        System.out.println("Asked for random word");
+
+        Integer max = null;
+
+        try {
+            PreparedStatement ps1 = Main.db.prepareStatement("SELECT MAX(WordID) FROM Words");
+            ResultSet results = ps1.executeQuery();
+            if (results.next()) {
+                max = results.getInt(1);
+            }
+        } catch (Exception exception) {
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"Error\": \"Unable to get random word, please see server console for more info.\"}";
+        }
+
+        String randomWord = "";
+
+        while (randomWord.length() != wordLength) {
+
+            int randomWordID = (int) Math.floor(Math.random() * max) + 1;
+            System.out.println("Random id is " + randomWordID);
+
+            try {
+                PreparedStatement ps2 = Main.db.prepareStatement("SELECT WordName FROM Words WHERE WordID = ?");
+                ps2.setInt(1, randomWordID);
+                ResultSet results = ps2.executeQuery();
+                if (results.next()) {
+                    randomWord = results.getString(1);
+                }
+                System.out.println("Random word is " + randomWord);
+            } catch (Exception exception) {
+                System.out.println("Database error: " + exception.getMessage());
+                return "{\"Error\": \"Unable to get random word, please see server console for more info.\"}";
+            }
+
+        }
+
+        return "{\"word\": \"" + randomWord + "\"}";
+
+    }
+
+
+
     @POST
     @Path("add")
 

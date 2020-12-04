@@ -93,7 +93,7 @@ function getword() {
                             deduction += deltaDeduction;
                             document.getElementById("score").innerHTML = score;
                         } else {
-                            alert("You got it!");
+                            alert("You got it, wooo!");
                         }
 
                     }

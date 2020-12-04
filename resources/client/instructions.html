@@ -22,6 +22,7 @@
     text {
         color: white;
         width: 75%;
+        max-width: 320px;
         font-size: 48px;
         height: auto;
         text-align: center
@@ -29,7 +30,7 @@
 
     backButton {
         display: block;
-        width: 10%;
+        width: auto;
         border: None;
         background-color: Transparent;
         color: white;
@@ -38,11 +39,6 @@
         font-family: Verdana;
         text-align: center;
         transition: 0.3s
-    }
-
-    img {
-        width: 75%;
-        height: auto
     }
 
     .center {
@@ -56,9 +52,11 @@
 <br>
 <div class="center">
     <img src="https://images.cooltext.com/5482794.png"
+         width="1280" height="1024"
          alt="Instructions" /></div>
 <div class="center">
     <img src="https://images.cooltext.com/5430825.png"
+         width="240" height="135"
          alt="Word Breaker" /></div>
 <div class="center">
     <backButton onclick="document.location = 'index.html'">Back</backButton></div>

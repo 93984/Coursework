@@ -21,10 +21,11 @@
 
     button {
         display: block;
+        width: auto;
         border: None;
         background-color: Transparent;
         color: white;
-        font-size: 36px;
+        font-size: 72px;
         cursor: pointer;
         font-family: Verdana;
         text-align: center;
@@ -40,7 +41,7 @@
     }
 
     img {
-        width: 50%;
+        width: 720px;
         height: auto
     }
 
@@ -49,17 +50,18 @@
         justify-content: center
     }
 
+    .content {
+        max-width: 720px;
+        margin: auto
+    }
 </style>
 
 <br>
-<div class="center">
-    <img src="https://images.cooltext.com/5430825.png"
-         alt="Word Breaker" /></div>
+<div class="content center">
+    <img src="https://images.cooltext.com/5430825.png" width="720"></div>
 <br>
 <div class="content center">
     <button onclick="document.location = 'difficulty.html'">Play Game</button></div>
-<div class="center">
-    <button onclick="document.location = 'leaderboards.html'">Leaderboards</button></div>
 <div class="center">
     <button onclick="document.location = 'instructions.html'">Instructions</button></div>
 <div class="content center">

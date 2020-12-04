@@ -1,31 +1,44 @@
 package server;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class AlgorithmTesting {
 
-    public static int blacks (String word, String guess) {
-        if (word.length() != guess.length()) {
-            return -1;
+    public static String[] stringToArray(String word) {
+        String[] characters = new String[word.length()];
+        for (int i = 0; i < word.length(); i++) {
+            characters[i] = String.valueOf(word.charAt(i));
+        }
+        return characters;
+    }
+
+    public static void blacks (String[] characters, String guess) {
+        if (characters.length != guess.length()) {
+            System.out.println("Error");
         } else {
             int blacks = 0;
-            for (int i = 0; i < word.length(); i += 1) {
-                if (guess.charAt(i) == word.charAt(i)) {
+            for (int i = 0; i < characters.length; i += 1) {
+                if (String.valueOf(guess.charAt(i)).equals(characters[i])) {
                     blacks += 1;
+                    characters[i] = "";
                 }
             }
-            return blacks;
+            whites(characters, guess);
+            System.out.println("Blacks: " + blacks);
         }
     }
 
-    public static int whites (String word, String guess, int blacks) {
+    public static void whites (String[] characters, String guess) {
         int whites = 0;
-        for (int i = 0; i < word.length(); i += 1) {
-            if (word.contains("guess.charAt(i)")) {
-                whites += 1;
+        for (int i = 0; i < characters.length; i += 1) {
+            for (int j = 0; j < characters.length; j += 1) {
+                if (String.valueOf(guess.charAt(i)).equals(characters[j])){
+                    whites += 1;
+                    characters[i] = "";
+                }
             }
         }
-        return whites - blacks;
+        System.out.println("Whites: " + whites);
     }
 
     public static String lowercase (String word) {
@@ -41,26 +54,15 @@ public class AlgorithmTesting {
         } return lower.toString();
     }
 
-    public static int score(int attempts, int time) {
-        int max = 42000;
-        int points = max;
-        int deduction = 1000;
-        int increase = 100;
-        for (int i = 1; i < attempts; i++) {
-            points -= deduction + (increase * i);
-        }
-        return points - (15 * time);
-    }
+
 
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        while (true) {
-            System.out.println("Enter attempts: ");
-            int x = input.nextInt();
-            System.out.println("Enter time in seconds: ");
-            int y = input.nextInt();
-            System.out.println(score(x,y));
-        }
+
+
+
+
+
+
     }
 }

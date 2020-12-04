@@ -21,7 +21,8 @@
 
     text {
         color: white;
-        width: 50%;
+        width: 75%;
+        max-width: 320px;
         font-size: 48px;
         height: auto;
         text-align: center
@@ -70,7 +71,8 @@
     }
 
     img {
-        width: 25%;
+        max-width: 576px;
+        width: 50%;
         height: auto
     }
 
@@ -85,27 +87,28 @@
 <br>
 <div class="center">
     <button style="background-color: green"
-            onclick="document.location = 'gameEasy.html'">
+            onclick="document.location = 'game.html?difficulty=4'">
         Easy (4 letters)</button></div>
 <div class="center">
     <button style="background-color: orange"
-            onclick="document.location = 'gameMedium.html'">
+            onclick="document.location = 'game.html?difficulty=5'">
         Medium (5 letters)</button></div>
 <div class="center">
     <button style="background-color: orangered"
-            onclick="document.location = 'gameHard.html'">
+            onclick="document.location = 'game.html?difficulty=6'">
         Hard (6 letters)</button></div>
 <div class="center">
     <button style="background-color: darkred"
-            onclick="document.location = 'gameVeryHard.html'">
+            onclick="document.location = 'game.html?difficulty=7'">
         Very hard (7 letters)</button></div>
 <div class="center">
     <button style="background-color: purple"
-            onclick="document.location = 'gameInsane.html'">
+            onclick="document.location = 'game.html?difficulty=8'">
         Insane (8 letters)</button></div>
 <br>
 <div class="center">
     <img src="https://images.cooltext.com/5430825.png"
-         alt="Word Breaker" /></div>
+         width="240" height="135"
+         alt="  Word Breaker" /></div>
 <div class="center">
     <backButton onclick="document.location = 'index.html'">Back</backButton></div>

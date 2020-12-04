@@ -79,9 +79,9 @@ function getword() {
 
                         for (let i = 0; i < word.length; i++) {
                             if (word.charAt(i) == yourGuess.charAt(i)) {
-                                matchPattern += "⬤";
+                                matchPattern += "●";
                             } else {
-                                matchPattern += "◯";
+                                matchPattern += "○";
                                 youGotIt = false;
                             }
                         }
@@ -93,7 +93,7 @@ function getword() {
                             deduction += deltaDeduction;
                             document.getElementById("score").innerHTML = score;
                         } else {
-                            alert("You got it, wooo!");
+                            alert("You got it!");
                         }
 
                     }

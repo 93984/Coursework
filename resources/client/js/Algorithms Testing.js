@@ -1,7 +1,7 @@
 let blacks = 0;
 let whites = 0;
 let youGotIt = true;
-let yourGuess = alert("Enter your guess: ");
+let yourGuess = "look";
 let word = "door";
 let characters = new Array(word.length);
 
@@ -29,4 +29,4 @@ for (let i = 0; i < characters.length; i++) {
 
 
 setInterval(function() {
-    alert("I was executed");}, 1000/15);
+    score -= 1;}, 1000/15);

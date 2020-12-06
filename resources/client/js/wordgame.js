@@ -10,8 +10,10 @@ const deltaDeduction = 100;
 function getQueryStringParameters() {
     let params = [];
     let q = document.URL.split('?')[1];
+
     if (q !== undefined) {
         q = q.split('&');
+
         for (let i = 0; i < q.length; i++) {
             let bits = q[i].split('=');
             params[bits[0]] = bits[1];
@@ -22,7 +24,6 @@ function getQueryStringParameters() {
 
 
 function getword() {
-
     let q = getQueryStringParameters();
     let length = q["difficulty"];
 
@@ -32,12 +33,10 @@ function getword() {
 
         if (result.hasOwnProperty('Error')) {
             alert(result.error);
+
         } else {
-
             console.log("Don't tell anyone, but the random word is " + result.word);
-
             word = result.word;
-
             let gameBoardHTML = "";
 
             gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px;'>";
@@ -57,32 +56,47 @@ function getword() {
             gameBoardHTML += "</div>";
 
             document.getElementById("gameBoard").innerHTML = gameBoardHTML;
-
             document.getElementById("guess").addEventListener('keypress', function (e) {
 
-                if (e.key === 'Enter') {
+                setInterval(function() {
+                    document.getElementById("score").innerHTML = score;}, 1000/15);
 
+                if (e.key === 'Enter') {
                     let yourGuess =  e.target.value;
 
-                    if (yourGuess.length != word.length) {
-
+                    if (yourGuess.length !== word.length) {
                         alert("That isn't " + word.length + " letters long!");
 
                     } else {
-
                         document.getElementById("pastGuesses").innerHTML += "<h2 style='color: white '>" + yourGuess + "</h2>";
                         document.getElementById("guess").value = "";
 
                         let matchPattern = "";
-
+                        let blacks = 0;
+                        let whites = 0;
                         let youGotIt = true;
+                        let characters = new String[word.length];
 
                         for (let i = 0; i < word.length; i++) {
-                            if (word.charAt(i) == yourGuess.charAt(i)) {
+                            characters[i] = word.charAt(i);
+                        }
+
+                        for (let i = 0; i < characters.length; i++) {
+                            if (characters[i] === yourGuess.charAt(i)) {
+                                blacks += 1;
                                 matchPattern += "●";
+                                characters[i] = "";
                             } else {
-                                matchPattern += "○";
                                 youGotIt = false;
+                            }
+
+                        } for (let i = 0; i < characters.length; i++) {
+                            for (let j = 0; j < characters.length; j++) {
+                                if (characters[i] === yourGuess.charAt(j)) {
+                                    whites += 1;
+                                    matchPattern += "○";
+                                    characters[i] = "";
+                                }
                             }
                         }
 
@@ -92,21 +106,13 @@ function getword() {
                             score -= deduction;
                             deduction += deltaDeduction;
                             document.getElementById("score").innerHTML = score;
+
                         } else {
-                            alert("You got it!");
+                            alert("You got it! The secret word was " + word);
                         }
-
                     }
-
                 }
-
             });
-
         }
-
     });
-
-
-
-
 }

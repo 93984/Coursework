@@ -16,11 +16,18 @@
             background-color: darkmagenta
         }
 
+        p {
+            color: white;
+            font-size: 12px;
+            font-family: Verdana,serif;
+            text-align: center;
+        }
+
         input {
             width: auto;
             font-size: 24px;
             color: black;
-            font-family: Verdana;
+            font-family: Verdana,serif;
         }
 
         button {
@@ -30,7 +37,7 @@
             color: white;
             background: black;
             font-size: 48px;
-            font-family: Comic Sans;
+            font-family: Verdana,serif;
             cursor: pointer;
             text-align: right;
             transition: 0.3s
@@ -44,7 +51,7 @@
             color: white;
             font-size: 36px;
             cursor: pointer;
-            font-family: Verdana;
+            font-family: Verdana,serif;
             text-align: center;
             transition: 0.3s
         }
@@ -55,11 +62,14 @@
 </head>
 
 <body onload="getword()">
-
+    <p>● A letter is correct and in the correct place</p>
+    <p>○ A letter is correct and but not in the correct place</p>
+    <p>▵ A letter is incorrect</p>
+    <div id="gameBoard" style="text-align: center"></div>
     <div class="center">
         <backButton onclick="document.location = 'index.html'">Back</backButton></div>
 
-    <div id="gameBoard" style="text-align: center"></div>
+
 
 </body>
 

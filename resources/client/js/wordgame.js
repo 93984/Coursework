@@ -1,7 +1,7 @@
 let word;
-let score = 42000;
+let score = 100000;
 let deduction = 1000;
-const deltaDeduction = 100;
+const deltaDeduction = 125;
 
 /*-------------------------------------------------------
   A utility function to extract the query string parameters
@@ -43,11 +43,11 @@ function getword() {
             gameBoardHTML += "<input type='text' id='guess' />";
             gameBoardHTML += "</div>";
 
-            gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px; background-color: #FFFFFF66'>";
+            gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px; color: white; background-color: #00000040'>";
             gameBoardHTML += "<h1>Your guesses:</h1><div id='pastGuesses'></div>";
             gameBoardHTML += "</div>";
 
-            gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px; background-color: #FFFFFF66'>";
+            gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px; color: white; background-color: #00000040'>";
             gameBoardHTML += "<h1>Your matches:</h1><div id='matches'></div>";
             gameBoardHTML += "</div>";
 
@@ -59,7 +59,7 @@ function getword() {
             document.getElementById("guess").addEventListener('keypress', function (e) {
 
                 setInterval(function() {
-                    document.getElementById("score").innerHTML = score;}, 1000/15);
+                    score -= 1; document.getElementById("score").innerHTML = score;}, 40);
 
                 if (e.key === 'Enter') {
                     let yourGuess =  e.target.value;
@@ -68,35 +68,43 @@ function getword() {
                         alert("That isn't " + word.length + " letters long!");
 
                     } else {
-                        document.getElementById("pastGuesses").innerHTML += "<h2 style='color: white '>" + yourGuess + "</h2>";
+                        document.getElementById("pastGuesses").innerHTML = "<h2 style='color: white '>" + yourGuess + "</h2>" + document.getElementById("pastGuesses").innerHTML;
                         document.getElementById("guess").value = "";
 
                         let matchPattern = "";
                         let blacks = 0;
                         let whites = 0;
                         let youGotIt = true;
+                        let wordTemp = word;
 
-
-                        for (let i = 0; i < word.length; i++) {
-                            if (word.charAt(i)=== yourGuess.charAt(i)) {
+                        for (let i = 0; i < wordTemp.length; i++) {
+                            if (wordTemp.charAt(i) === yourGuess.charAt(i)) {
                                 blacks += 1;
                                 matchPattern += "●";
-                                word = word.substr(0, i) + "_" + word.substr(i+1);
-                                console.log(word);
+                                wordTemp = wordTemp.substr(0, i) + "_" + wordTemp.substr(i + 1);
                             } else {
                                 youGotIt = false;
                             }
 
-                            for (let j = 0; j < word.length; j++) {
-                                if (word.charAt(i) === yourGuess.charAt(j)) {
+                        } for (let j = 0; j < wordTemp.length; j++) {
+                            for (let k = 0; k < wordTemp.length; k++) {
+                                if (wordTemp.charAt(j) === yourGuess.charAt(k)) {
                                     whites += 1;
                                     matchPattern += "○";
-                                    word = word.substr(0, i) + "_" + word.substr(i+1);
+                                    wordTemp = wordTemp.substr(0, k) + "_" + wordTemp.substr(k + 1);
                                 }
                             }
                         }
 
-                        document.getElementById("matches").innerHTML += "<h2 style='color: white '>" + matchPattern + "</h2>";
+                        let c = 0;
+                        while (blacks + whites + c < 4) {
+                            matchPattern += "▵";
+                            c += 1;
+                        }
+
+                        wordTemp = word;
+
+                        document.getElementById("matches").innerHTML = "<h2 style='color: white '>" + matchPattern + "</h2>" + document.getElementById("matches").innerHTML;
 
                         if (!youGotIt) {
                             score -= deduction;

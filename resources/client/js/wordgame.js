@@ -43,11 +43,11 @@ function getword() {
             gameBoardHTML += "<input type='text' id='guess' />";
             gameBoardHTML += "</div>";
 
-            gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px; color: white; background-color: #00000040'>";
+            gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px; color: white; background-color: #00000080'>";
             gameBoardHTML += "<h1>Your guesses:</h1><div id='pastGuesses'></div>";
             gameBoardHTML += "</div>";
 
-            gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px; color: white; background-color: #00000040'>";
+            gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px; color: white; background-color: #00000080'>";
             gameBoardHTML += "<h1>Your matches:</h1><div id='matches'></div>";
             gameBoardHTML += "</div>";
 
@@ -98,7 +98,7 @@ function getword() {
 
                         let c = 0;
                         while (blacks + whites + c < 4) {
-                            matchPattern += "▵";
+                            matchPattern += "◘";
                             c += 1;
                         }
 

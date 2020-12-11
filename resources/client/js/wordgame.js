@@ -58,8 +58,9 @@ function getword() {
             document.getElementById("gameBoard").innerHTML = gameBoardHTML;
             document.getElementById("guess").addEventListener('keypress', function (e) {
 
+                let youGotIt = false;
                 setInterval(function() {
-                    score -= 1; document.getElementById("score").innerHTML = score;}, 40);
+                    score -= 1; document.getElementById("score").innerHTML = score;}, 20);
 
                 if (e.key === 'Enter') {
                     let yourGuess =  e.target.value;
@@ -74,7 +75,6 @@ function getword() {
                         let matchPattern = "";
                         let blacks = 0;
                         let whites = 0;
-                        let youGotIt = true;
                         let wordTemp = word;
 
                         for (let i = 0; i < wordTemp.length; i++) {
@@ -82,8 +82,10 @@ function getword() {
                                 blacks += 1;
                                 matchPattern += "●";
                                 wordTemp = wordTemp.substr(0, i) + "_" + wordTemp.substr(i + 1);
-                            } else {
-                                youGotIt = false;
+                                if (blacks === 4) {
+                                    youGotIt = true;
+                                    alert("You got it! The secret word was " + word);
+                                }
                             }
 
                         } for (let j = 0; j < wordTemp.length; j++) {
@@ -105,15 +107,9 @@ function getword() {
                         wordTemp = word;
 
                         document.getElementById("matches").innerHTML = "<h2 style='color: white '>" + matchPattern + "</h2>" + document.getElementById("matches").innerHTML;
-
-                        if (!youGotIt) {
-                            score -= deduction;
-                            deduction += deltaDeduction;
-                            document.getElementById("score").innerHTML = score;
-
-                        } else {
-                            alert("You got it! The secret word was " + word);
-                        }
+                        score -= deduction;
+                        deduction += deltaDeduction;
+                        document.getElementById("score").innerHTML = score;
                     }
                 }
             });

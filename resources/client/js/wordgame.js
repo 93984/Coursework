@@ -60,7 +60,7 @@ function getword() {
 
                 let youGotIt = false;
                 setInterval(function() {
-                    score -= 1; document.getElementById("score").innerHTML = score;}, 20);
+                    score -= 1; document.getElementById("score").innerHTML = score;}, 40);
 
                 if (e.key === 'Enter') {
                     let yourGuess =  e.target.value;
@@ -82,7 +82,7 @@ function getword() {
                                 blacks += 1;
                                 matchPattern += "●";
                                 wordTemp = wordTemp.substr(0, i) + "_" + wordTemp.substr(i + 1);
-                                if (blacks === 4) {
+                                if (blacks === word.length) {
                                     youGotIt = true;
                                     alert("You got it! The secret word was " + word);
                                 }
@@ -99,7 +99,7 @@ function getword() {
                         }
 
                         let c = 0;
-                        while (blacks + whites + c < 4) {
+                        while (blacks + whites + c < word.length) {
                             matchPattern += "◘";
                             c += 1;
                         }

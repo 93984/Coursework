@@ -23,7 +23,20 @@ function getQueryStringParameters() {
 }
 
 /*
-function numberBlacks (word, guess, youGotIt) {
+function lowercase (word) {
+    StringBuilder lower = new StringBuilder();   // creates a string variable that is able to add other characters to the end of the string
+    for (let i = 0; i < word.length; i += 1) {   // repeats for each character in the word
+        let asc = (int) word.charAt(i);          // finds the ascii value of the character
+        if (asc >= 65 && asc <= 90) {            // if the character is a capital letter
+            asc += 32;                           // converts to lowercase
+        } else if (asc < 97 || asc > 122) {      // any other illegal character
+            alert("Invalid character);           // the error return
+        } let c = (char) asc;                    // converts the ascii value back into its character
+        lower.append(c);                         // adds this value to the end of the appendable string
+    } return lower.toString();
+}
+
+function numberBlacks (lowercase(word), lowercase(guess), youGotIt) {
     document.getElementById("pastGuesses").innerHTML = "<h2 style='color: white '>" + guess + "</h2>" + document.getElementById("pastGuesses").innerHTML;
     document.getElementById("guess").value = "";
     let wordTemp = word;
@@ -64,6 +77,7 @@ function rest(wordTemp, matchPattern) {
     document.getElementById("matches").innerHTML = "<h2 style='color: white '>" + matchPattern + "</h2>" + document.getElementById("matches").innerHTML;
 }
 */
+
 
 function marking (word, yourGuess, youGotIt) {
     document.getElementById("pastGuesses").innerHTML = "<h2 style='color: white '>" + yourGuess + "</h2>" + document.getElementById("pastGuesses").innerHTML;

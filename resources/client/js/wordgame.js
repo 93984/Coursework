@@ -22,6 +22,49 @@ function getQueryStringParameters() {
     return params;
 }
 
+/*
+function numberBlacks (word, guess, youGotIt) {
+    document.getElementById("pastGuesses").innerHTML = "<h2 style='color: white '>" + guess + "</h2>" + document.getElementById("pastGuesses").innerHTML;
+    document.getElementById("guess").value = "";
+    let wordTemp = word;
+    let blacks = 0;
+    let matchPattern = "";
+    for (let i = 0; i < wordTemp.length; i++) { //repeats for each character in the word
+        if (wordTemp.charAt(i) === guess.charAt(i)) { //guess is correct AND in the correct position
+            blacks += 1;
+            matchPattern += "●";
+            wordTemp = wordTemp.substr(0, i) + "_" + wordTemp.substr(i + 1);
+            if (blacks === word.length) {
+                youGotIt = true;
+                alert("You got it! The secret word was " + word);
+            }
+        }
+    }
+    numberWhites(wordTemp, guess, matchPattern);
+}
+
+function numberWhites(wordTemp, guess, matchPattern, blacks) {
+    let whites = 0;
+    for (let j = 0; j < wordTemp.length; j++) {
+        for (let k = 0; k < wordTemp.length; k++) {
+            if (wordTemp.charAt(j) === guess.charAt(k)) {
+                whites += 1;
+                matchPattern += "○";
+                wordTemp = wordTemp.substr(0, k) + "_" + wordTemp.substr(k + 1);
+            }
+        }
+    }
+    rest(wordTemp, matchPattern);
+}
+
+function rest(wordTemp, matchPattern) {
+    while (wordTemp.length !== 0) {
+        matchPattern += "◘";
+    }
+    document.getElementById("matches").innerHTML = "<h2 style='color: white '>" + matchPattern + "</h2>" + document.getElementById("matches").innerHTML;
+}
+*/
+
 function marking (word, yourGuess, youGotIt) {
     document.getElementById("pastGuesses").innerHTML = "<h2 style='color: white '>" + yourGuess + "</h2>" + document.getElementById("pastGuesses").innerHTML;
     document.getElementById("guess").value = "";

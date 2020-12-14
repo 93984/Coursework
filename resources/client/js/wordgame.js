@@ -1,7 +1,10 @@
 let word;
-let score = 100000;
-let deduction = 1000;
-const deltaDeduction = 125;
+let scoreTotal = 100000;
+let guessDecrement = 1000;
+const extraGuessDecrement = 125;
+let attempts = 0;
+const maxAttempts = 16;
+let youGotIt = false;
 
 /*-------------------------------------------------------
   A utility function to extract the query string parameters
@@ -79,7 +82,8 @@ function rest(wordTemp, matchPattern) {
 */
 
 
-function marking (word, yourGuess, youGotIt) {
+function marking (word, yourGuess, youGotIt, attempts, maxAttempts) {
+
     document.getElementById("pastGuesses").innerHTML = "<h2 style='color: white '>" + yourGuess + "</h2>" + document.getElementById("pastGuesses").innerHTML;
     document.getElementById("guess").value = "";
     let blacks = 0;
@@ -96,7 +100,11 @@ function marking (word, yourGuess, youGotIt) {
                 alert("You got it! The secret word was " + word);
             }
         }
-    } for (let j = 0; j < wordTemp.length; j++) {
+    }
+    if (attempts === maxAttempts && youGotIt === false) {
+        alert("You have ran out of attempts");
+    }
+    for (let j = 0; j < wordTemp.length; j++) {
         for (let k = 0; k < wordTemp.length; k++) {
             if (wordTemp.charAt(j) === yourGuess.charAt(k)) {
                 whites += 1;
@@ -104,13 +112,13 @@ function marking (word, yourGuess, youGotIt) {
                 wordTemp = wordTemp.substr(0, k) + "_" + wordTemp.substr(k + 1);
             }
         }
-    } let c = 0;
-    while (blacks + whites + c < word.length) {
+    }
+    while (matchPattern.length < word.length) {
         matchPattern += "◘";
-        c += 1;
     }
     document.getElementById("matches").innerHTML = "<h2 style='color: white '>" + matchPattern + "</h2>" + document.getElementById("matches").innerHTML;
 }
+
 
 function getWord() {
     let q = getQueryStringParameters();
@@ -141,15 +149,14 @@ function getWord() {
             gameBoardHTML += "</div>";
 
             gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px;'>";
-            gameBoardHTML += "<h1 style='background-color: white; margin: 8px'>Score:<span id='score'>" + score + "</span></h1>";
+            gameBoardHTML += "<h1 style='background-color: white; margin: 8px'>scoreTotal:<span id='scoreTotal'>" + scoreTotal + "</span></h1>";
             gameBoardHTML += "</div>";
 
             document.getElementById("gameBoard").innerHTML = gameBoardHTML;
             document.getElementById("guess").addEventListener('keypress', function (e) {
 
-                let youGotIt = false;
                 setInterval(function() {
-                    score -= 1; document.getElementById("score").innerHTML = score;}, 40);
+                    scoreTotal -= 1; document.getElementById("scoreTotal").innerHTML = scoreTotal;}, 40);
 
                 if (e.key === 'Enter') {
                     let yourGuess =  e.target.value;
@@ -158,12 +165,12 @@ function getWord() {
                         alert("That isn't " + word.length + " letters long!");
 
                     } else {
+                        attempts += 1;
+                        marking(word, yourGuess, youGotIt, attempts, maxAttempts);
 
-                        marking(word, yourGuess, youGotIt);
-
-                        score -= deduction;
-                        deduction += deltaDeduction;
-                        document.getElementById("score").innerHTML = score;
+                        scoreTotal -= guessDecrement;
+                        guessDecrement += extraGuessDecrement;
+                        document.getElementById("scoreTotal").innerHTML = scoreTotal;
                     }
                 }
             });

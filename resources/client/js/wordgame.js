@@ -25,71 +25,14 @@ function getQueryStringParameters() {
     return params;
 }
 
-/*
-function lowercase (word) {
-    StringBuilder lower = new StringBuilder();   // creates a string variable that is able to add other characters to the end of the string
-    for (let i = 0; i < word.length; i += 1) {   // repeats for each character in the word
-        let asc = (int) word.charAt(i);          // finds the ascii value of the character
-        if (asc >= 65 && asc <= 90) {            // if the character is a capital letter
-            asc += 32;                           // converts to lowercase
-        } else if (asc < 97 || asc > 122) {      // any other illegal character
-            alert("Invalid character);           // the error return
-        } let c = (char) asc;                    // converts the ascii value back into its character
-        lower.append(c);                         // adds this value to the end of the appendable string
-    } return lower.toString();
-}
-
-function numberBlacks (lowercase(word), lowercase(guess), youGotIt) {
-    document.getElementById("pastGuesses").innerHTML = "<h2 style='color: white '>" + guess + "</h2>" + document.getElementById("pastGuesses").innerHTML;
-    document.getElementById("guess").value = "";
-    let wordTemp = word;
-    let blacks = 0;
-    let matchPattern = "";
-    for (let i = 0; i < wordTemp.length; i++) { //repeats for each character in the word
-        if (wordTemp.charAt(i) === guess.charAt(i)) { //guess is correct AND in the correct position
-            blacks += 1;
-            matchPattern += "●";
-            wordTemp = wordTemp.substr(0, i) + "_" + wordTemp.substr(i + 1);
-            if (blacks === word.length) {
-                youGotIt = true;
-                alert("You got it! The secret word was " + word);
-            }
-        }
-    }
-    numberWhites(wordTemp, guess, matchPattern);
-}
-
-function numberWhites(wordTemp, guess, matchPattern, blacks) {
-    let whites = 0;
-    for (let j = 0; j < wordTemp.length; j++) {
-        for (let k = 0; k < wordTemp.length; k++) {
-            if (wordTemp.charAt(j) === guess.charAt(k)) {
-                whites += 1;
-                matchPattern += "○";
-                wordTemp = wordTemp.substr(0, k) + "_" + wordTemp.substr(k + 1);
-            }
-        }
-    }
-    rest(wordTemp, matchPattern);
-}
-
-function rest(wordTemp, matchPattern) {
-    while (wordTemp.length !== 0) {
-        matchPattern += "◘";
-    }
-    document.getElementById("matches").innerHTML = "<h2 style='color: white '>" + matchPattern + "</h2>" + document.getElementById("matches").innerHTML;
-}
-*/
-
-
 function marking (word, yourGuess, youGotIt, attempts, maxAttempts) {
-
     document.getElementById("pastGuesses").innerHTML = "<h2 style='color: white '>" + yourGuess + "</h2>" + document.getElementById("pastGuesses").innerHTML;
     document.getElementById("guess").value = "";
     let blacks = 0;
     let whites = 0;
     let wordTemp = word;
     let matchPattern = "";
+
     for (let i = 0; i < wordTemp.length; i++) { //repeats for each character in the word
         if (wordTemp.charAt(i) === yourGuess.charAt(i)) { //guess is correct AND in the correct position
             blacks += 1;
@@ -97,7 +40,10 @@ function marking (word, yourGuess, youGotIt, attempts, maxAttempts) {
             wordTemp = wordTemp.substr(0, i) + "_" + wordTemp.substr(i + 1);
             if (blacks === word.length) {
                 youGotIt = true;
-                alert("You got it! The secret word was " + word);
+                alert("You got it! The secret word was " + word + ". Your final score is " + scoreTotal);
+                window.location.href="/client/index.html";
+
+                //add to leaderboard
             }
         }
     }
@@ -106,13 +52,15 @@ function marking (word, yourGuess, youGotIt, attempts, maxAttempts) {
     }
     for (let j = 0; j < wordTemp.length; j++) {
         for (let k = 0; k < wordTemp.length; k++) {
-            if (wordTemp.charAt(j) === yourGuess.charAt(k)) {
+            if (yourGuess.charAt(j) === wordTemp.charAt(k)) {
                 whites += 1;
                 matchPattern += "○";
                 wordTemp = wordTemp.substr(0, k) + "_" + wordTemp.substr(k + 1);
+                yourGuess = yourGuess.substr(0, j) + "_" + yourGuess.substr(j + 1);
             }
         }
     }
+
     while (matchPattern.length < word.length) {
         matchPattern += "◘";
     }
@@ -149,14 +97,18 @@ function getWord() {
             gameBoardHTML += "</div>";
 
             gameBoardHTML += "<div style='width:calc(20% - 32px); display: inline-block; margin: 32px;'>";
-            gameBoardHTML += "<h1 style='background-color: white; margin: 8px'>scoreTotal:<span id='scoreTotal'>" + scoreTotal + "</span></h1>";
+            gameBoardHTML += "<h1 style='background-color: white; margin: 8px'>Score: <span id='scoreTotal'>" + scoreTotal + "</span></h1>";
             gameBoardHTML += "</div>";
+
+            setInterval(function() {
+                scoreTotal -= 1; document.getElementById("scoreTotal").innerHTML = scoreTotal;}, 40);
+            if (scoreTotal === 0) {
+                scoreTotal = 0;
+            }
 
             document.getElementById("gameBoard").innerHTML = gameBoardHTML;
             document.getElementById("guess").addEventListener('keypress', function (e) {
 
-                setInterval(function() {
-                    scoreTotal -= 1; document.getElementById("scoreTotal").innerHTML = scoreTotal;}, 40);
 
                 if (e.key === 'Enter') {
                     let yourGuess =  e.target.value;

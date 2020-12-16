@@ -1,13 +1,11 @@
 package controllers;
 
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import server.Main;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,6 +34,23 @@ public class Leaderboards{
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage());
             return "{\"Error\": \"Unable to list items.  Error code xx.\"}";
+        }
+    }
+    @POST
+    @Path("add")
+
+    public String WordsAdd(@FormDataParam("WordID") String WordID, @FormDataParam("WordName") String WordName) {
+        System.out.println("Invoked Words.WordsAdd()");
+
+        try {
+            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Words (WordID, WordName) VALUES (?, ?, ?)");
+            ps.setString(1, WordID);
+            ps.setString(2, WordName);
+            ps.execute();
+            return "{\"OK\": \"Added word.\"}";
+        } catch (Exception exception) {
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"Error\": \"Unable to create new item, please see server console for more info.\"}";
         }
     }
 }

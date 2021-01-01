@@ -11,11 +11,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Main {
-
     public static Connection db = null;
-
     public static void main(String[] args) {
-
         openDatabase();
         ResourceConfig config = new ResourceConfig();
         config.packages("controllers");
@@ -35,7 +32,6 @@ public class Main {
     }
 
     private static void openDatabase() {
-
         try {
             SQLiteConfig config = new SQLiteConfig();
             config.enforceForeignKeys(true);

@@ -33,8 +33,7 @@ public class Users {
                 row.put("UserID", results.getString(1));
                 row.put("UserName", results.getString(2));
                 response.add(row);
-            }
-            return response.toString();
+            } return response.toString();
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage());
             return "{\"Error\": \"Unable to list items.  Error code xx.\"}";
@@ -57,8 +56,7 @@ public class Users {
                 response.put("UserID", UserID);
                 response.put("UserName", results.getString(1));
                 response.put("Token", results.getInt(2));
-            }
-            return response.toString();
+            } return response.toString();
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage());
             return "{\"Error\": \"Unable to get item, please see server console for more info.\"}";

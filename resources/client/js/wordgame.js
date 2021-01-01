@@ -1,5 +1,5 @@
 let word;
-let scoreTotal = 10000;
+let scoreTotal = 100000;
 let guessDecrement = 1000;
 const extraGuessDecrement = 125;
 let attempts = 0;

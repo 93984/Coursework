@@ -17,12 +17,15 @@ import java.sql.ResultSet;
 public class Leaderboards{
     @GET
     @Path("list")
+
     public String LeaderboardsList() {
         System.out.println("Invoked Leaderboards.LeaderboardsList()");
         JSONArray response = new JSONArray();
+
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT Rank, UserID, Score FROM Leaderboards");
             ResultSet results = ps.executeQuery();
+
             while (results.next()) {
                 JSONObject row = new JSONObject();
                 row.put("Rank", results.getInt(1));

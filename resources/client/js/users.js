@@ -18,10 +18,10 @@ function getUsersList() {
 
 function formatUsersList(myJSONArray){
     let dataHTML = "";
+
     for (let item of myJSONArray) {
         dataHTML += "<tr><td>" + item.userID + "<td><td>" + item.userName + "<tr><td>";
-    }
-    document.getElementById("UsersTable").innerHTML = dataHTML;
+    } document.getElementById("UsersTable").innerHTML = dataHTML;
 }
 
 /*getUser() returns one row of data from the database using a GET and path parameter*/
@@ -36,6 +36,7 @@ function getUser() {
     }).then(response => {
         return response.json();                                                                                         //return response to JSON
     }).then(response => {
+
         if (response.hasOwnProperty("Error")) {                                                                      //checks if response from server has an "Error"
             alert(JSON.stringify(response));                                                                            // if it does, convert JSON object to string and alert
         } else {
@@ -44,9 +45,6 @@ function getUser() {
     });
 }
                                                                                                                         /*Add the form elements to index.html inside <body tags*/
-
-
-
                                                                                                                         /*addUser function to add a user to the database*/
 function addUser() {
     console.log("Invoked AddUser()");
@@ -58,6 +56,7 @@ function addUser() {
     }).then(response => {
         return response.json()
     }).then(response => {
+
         if (response.hasOwnProperty("Error")) {
             alert(JSON.stringify(response));
         } else {
@@ -65,10 +64,8 @@ function addUser() {
         }                                                                                                               //in the client folder called welcome.html
     });
 }
-
                                                                                                                         /*Add the form elements to index.html inside <body tags*
                                                                                                                         /*If you want two bits of data but there is no form, you can create a form and stick the values in eg:*/
-
 function postWeightAdd() {
     console.log("invoked postWeightAdd()");
     const date = document.getElementById('datepicker').value;
@@ -83,6 +80,7 @@ function postWeightAdd() {
     }).then(response => {
         return response.json()                                                                                          //method returns a promise, have to return from here to get text
     }).then(response => {
+
         if (response.hasOwnProperty("Error")) {                                                                         //checks if response from server has a key "Error"
             alert(JSON.stringify(response));                                                                            // if it does, convert JSON object to string and alert
         } else {

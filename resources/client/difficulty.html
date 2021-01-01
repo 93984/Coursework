@@ -2,86 +2,89 @@
 <html lang="en">
 
 <head>
+    <title>Select a difficulty</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="length=device-length, initial-scale=1">
+
+    <style>
+        body {
+            background-image: url('https://images.cooltext.com/5430853.png');
+            background-size: 2048px 1620px;
+            max-width: 100%;
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: darkmagenta
+        }
+
+        text {
+            color: white;
+            width: 75%;
+            max-width: 320px;
+            font-size: 48px;
+            height: auto;
+            text-align: center
+        }
+
+        button {
+            display: block;
+            width: 50%;
+            max-width: auto;
+            height: auto;
+            color: white;
+            font-size: 48px;
+            font-family: Verdana;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s
+        }
+
+        backButton {
+            display: block;
+            width: auto;
+            border: None;
+            background-color: Transparent;
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
+            font-family: Verdana;
+            text-align: center;
+            transition: 0.3s
+        }
+
+        button:hover {
+            opacity: 0.8
+        }
+
+        button:active {
+            transform: translateY(8px)
+        }
+
+        backButton:hover {
+            opacity: 0.8
+        }
+
+        backButton:active {
+            transform: translateY(8px)
+        }
+
+        img {
+            max-width: 576px;
+            width: 50%;
+            height: auto
+        }
+
+        .center {
+            display: flex;
+            justify-content: center
+        }
+
+    </style>
+
 </head>
 
 <body>
-<title>Select a difficulty</title>
-<style>
-    body {
-        background-image: url('https://images.cooltext.com/5430853.png');
-        background-size: 2048px 1620px;
-        max-width: 100%;
-        height: auto;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-color: darkmagenta
-    }
 
-    text {
-        color: white;
-        width: 75%;
-        max-width: 320px;
-        font-size: 48px;
-        height: auto;
-        text-align: center
-    }
-
-    button {
-        display: block;
-        width: 50%;
-        max-width: auto;
-        height: auto;
-        color: white;
-        font-size: 48px;
-        font-family: Verdana;
-        cursor: pointer;
-        text-align: center;
-        transition: 0.3s
-    }
-
-    backButton {
-        display: block;
-        width: auto;
-        border: None;
-        background-color: Transparent;
-        color: white;
-        font-size: 36px;
-        cursor: pointer;
-        font-family: Verdana;
-        text-align: center;
-        transition: 0.3s
-    }
-
-    button:hover {
-        opacity: 0.8
-    }
-
-    button:active {
-        transform: translateY(8px)
-    }
-
-    backButton:hover {
-        opacity: 0.8
-    }
-
-    backButton:active {
-        transform: translateY(8px)
-    }
-
-    img {
-        max-width: 576px;
-        width: 50%;
-        height: auto
-    }
-
-    .center {
-        display: flex;
-        justify-content: center
-    }
-
-</style>
 <br><br>
 <div class="center"><text>Choose your difficulty</text></div>
 <br>
@@ -112,3 +115,7 @@
          alt="  Word Breaker" /></div>
 <div class="center">
     <backButton onclick="document.location = 'index.html'">Back</backButton></div>
+
+</body>
+
+</html>

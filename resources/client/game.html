@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Game</title>
-    <script src="/client/js/wordgame.js"></script>
+    <meta charset="UTF-8">
+    <script src="/client/js/game.js"></script>
 
     <style>
         body {
@@ -57,18 +57,16 @@
 
     </style>
 
-
 </head>
 
 <body onload="getWord()">
+
     <div id="gameBoard" style="text-align: center"></div>
     <p>● = Correct and in the correct place</p>
     <p>○ = Correct and in the incorrect place</p>
     <p>◘ = Incorrect</p>
     <div class="center">
         <backButton onclick="document.location = 'index.html'">Back</backButton></div>
-
-
 
 </body>
 

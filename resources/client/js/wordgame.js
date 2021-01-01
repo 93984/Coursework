@@ -1,5 +1,5 @@
 let word;
-let scoreTotal = 100000;
+let scoreTotal = 10000;
 let guessDecrement = 1000;
 const extraGuessDecrement = 125;
 let attempts = 0;
@@ -57,18 +57,14 @@ function marking (word, yourGuess, youGotIt, attempts, maxAttempts) {
             if (blacks === word.length) {
                 youGotIt = true;
                 alert("You got it! The secret word was " + word + ". Your final score is " + scoreTotal);
-                window.location.href="/client/index.html";
-
-
+                returnToMenu();
                 //add to leaderboard
             }
         }
-    }
-    if (attempts === maxAttempts && youGotIt === false) {
+    } if (attempts === maxAttempts && youGotIt === false) {
         alert("You have ran out of attempts! The secret word was " + word);
-        window.location.href="/client/index.html";
-    }
-    for (let j = 0; j < wordTemp.length; j++) {
+        returnToMenu();
+    } for (let j = 0; j < wordTemp.length; j++) {
         for (let k = 0; k < wordTemp.length; k++) {
             if (yourGuess.charAt(j) === wordTemp.charAt(k)) {
                 whites += 1;
@@ -81,24 +77,24 @@ function marking (word, yourGuess, youGotIt, attempts, maxAttempts) {
 
     while (matchPattern.length < word.length) {
         matchPattern += "◘";
-    }
-    document.getElementById("matches").innerHTML = "<h2 style='color: white '>" + matchPattern + "</h2>" + document.getElementById("matches").innerHTML;
+    } document.getElementById("matches").innerHTML = "<h2 style='color: white '>" + matchPattern + "</h2>" + document.getElementById("matches").innerHTML;
 }
 
+
+function returnToMenu() {
+    window.location.href="/client/index.html";
+}
 
 function getWord() {
     let q = getQueryStringParameters();
     let length = q["difficulty"];
-
     fetch('/words/random/' + length, {method: 'get'}
     ).then(response => response.json()
     ).then(result => {
 
         if (result.hasOwnProperty('Error')) {
             alert(result.error);
-
         } else {
-            console.log("Don't tell anyone, but the random word is " + result.word);
             word = result.word;
             let gameBoardHTML = "";
 
@@ -119,28 +115,28 @@ function getWord() {
             gameBoardHTML += "</div>";
 
             setInterval(function() {
-                scoreTotal -= 1; document.getElementById("scoreTotal").innerHTML = scoreTotal;}, 1000/interval);
-            if (scoreTotal === 0) {
-                scoreTotal = 0;
-            }
+                if (scoreTotal <= 0) {
+                    alert("You ran out of time! The secret word was " + word);
+                    returnToMenu();
+                } scoreTotal -= 1; document.getElementById("scoreTotal").innerHTML = scoreTotal;
+                }, 1000/interval);
+
 
             document.getElementById("gameBoard").innerHTML = gameBoardHTML;
             document.getElementById("guess").addEventListener('keypress', function (e) {
 
-
                 if (e.key === 'Enter') {
                     let yourGuess =  e.target.value;
-                    yourGuess = lowercase(yourGuess);
 
                     if (yourGuess.length !== word.length) {
                         alert("That isn't " + word.length + " letters long or you have entered an invalid character!");
                     } else {
+                        yourGuess = lowercase(yourGuess);
                         attempts += 1;
-                        marking(word, yourGuess, youGotIt, attempts, maxAttempts);
-
                         scoreTotal -= guessDecrement;
                         guessDecrement += extraGuessDecrement;
                         document.getElementById("scoreTotal").innerHTML = scoreTotal;
+                        marking(word, yourGuess, youGotIt, attempts, maxAttempts);
                     }
                 }
             });

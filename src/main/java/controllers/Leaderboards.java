@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 @Consumes(MediaType.MULTIPART_FORM_DATA)
 @Produces(MediaType.APPLICATION_JSON)
 
-public class Leaderboards{
+public class Leaderboards {
     @GET
     @Path("list")
 
@@ -32,13 +32,13 @@ public class Leaderboards{
                 row.put("UserID", results.getString(2));
                 row.put("Score", results.getInt(1));
                 response.add(row);
-            }
-            return response.toString();
+            } return response.toString();
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage());
             return "{\"Error\": \"Unable to list items.  Error code xx.\"}";
         }
     }
+
     @POST
     @Path("add")
 

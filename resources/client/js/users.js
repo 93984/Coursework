@@ -1,7 +1,8 @@
 "use strict";
 function getUsersList() {
     debugger;
-    console.log("Invoked getUsersList()");                                                                              //console.log your BFF for debugging client side - also use debugger statement
+    console.log("Invoked getUsersList()");                                                                            //console.log your BFF for debugging client side - also use debugger statement
+
     const url = "/users/list/";    		                                                                                // API method on web server will be in Users class, method list
     fetch(url, {
         method: "GET",				                                                                                    //Get method
@@ -27,6 +28,7 @@ function formatUsersList(myJSONArray){
 /*getUser() returns one row of data from the database using a GET and path parameter*/
 function getUser() {
     console.log("Invoked getUser()");                                                                                   //console.log your BFF for debugging client side
+
     const userID = document.getElementById("userID").value;                                                             //get the UserId from the HTML element with id=userID
     //let userID = 1; 			                                                                                        //You could hard code it if you have problems
     //debugger;				                                                                                            //debugger statement to allow you to step through the code in console dev F12
@@ -36,7 +38,6 @@ function getUser() {
     }).then(response => {
         return response.json();                                                                                         //return response to JSON
     }).then(response => {
-
         if (response.hasOwnProperty("Error")) {                                                                      //checks if response from server has an "Error"
             alert(JSON.stringify(response));                                                                            // if it does, convert JSON object to string and alert
         } else {
@@ -48,6 +49,7 @@ function getUser() {
                                                                                                                         /*addUser function to add a user to the database*/
 function addUser() {
     console.log("Invoked AddUser()");
+
     const formData = new FormData(document.getElementById('InputUserDetails'));
     let url = "/users/add";
     fetch(url, {
@@ -56,7 +58,6 @@ function addUser() {
     }).then(response => {
         return response.json()
     }).then(response => {
-
         if (response.hasOwnProperty("Error")) {
             alert(JSON.stringify(response));
         } else {
@@ -68,11 +69,13 @@ function addUser() {
                                                                                                                         /*If you want two bits of data but there is no form, you can create a form and stick the values in eg:*/
 function postWeightAdd() {
     console.log("invoked postWeightAdd()");
+
     const date = document.getElementById('datepicker').value;
     const weightInKG = document.getElementById('weightInKG').value;
     var formData = new FormData();
     formData.append('date', date);
     formData.append('weightInKG', weightInKG);
+
     var url = "/weight/add";
     fetch(url, {
         method: "POST",
@@ -80,7 +83,6 @@ function postWeightAdd() {
     }).then(response => {
         return response.json()                                                                                          //method returns a promise, have to return from here to get text
     }).then(response => {
-
         if (response.hasOwnProperty("Error")) {                                                                         //checks if response from server has a key "Error"
             alert(JSON.stringify(response));                                                                            // if it does, convert JSON object to string and alert
         } else {
@@ -92,20 +94,21 @@ function postWeightAdd() {
 function UsersLogin() {
     //debugger;
     console.log("Invoked UsersLogin() ");
+
     let url = "/users/login";
     let formData = new FormData(document.getElementById('LoginForm'));
     fetch(url, {
         method: "POST",
         body: formData,
     }).then(response => {
-    return response.json();                 //now return that promise to JSON
+        return response.json();                 //now return that promise to JSON
     }).then(response => {
-
         if (response.hasOwnProperty("Error")) {
             alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
         } else {
             Cookies.set("Token", response.Token);
             Cookies.set("UserName", response.UserName);
+
             window.open("index.html", "_self");       //open index.html in same tab
         }
     });
@@ -114,18 +117,19 @@ function UsersLogin() {
 function UsersLogout() {
     //debugger;
     console.log("Invoked UsersLogout()");
+
     let url = "/users/logout";
     fetch(url, {
         method: "POST"
     }).then(response => {
         return response.json();                 //now return that promise to JSON
     }).then(response => {
-
         if (response.hasOwnProperty("Error")) {
             alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
         } else {
             Cookies.remove("Token", response.Token);    //UserName and Token are removed
             Cookies.remove("UserName", response.UserName);
+
             window.open("index.html", "_self");       //open index.html in same tab
         }
     });

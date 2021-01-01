@@ -56,8 +56,7 @@ public class Words {
                 response.put("WordID", WordID);
                 response.put("WordName", results.getString(1));
                 response.put("Token", results.getInt(2));
-            }
-            return response.toString();
+            } return response.toString();
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage());
             return "{\"Error\": \"Unable to get item, please see server console for more info.\"}";
@@ -85,7 +84,6 @@ public class Words {
 
         while (randomWord.length() != wordLength) {
             int randomWordID = (int) Math.floor(Math.random() * max) + 1;
-            System.out.println("Random id is " + randomWordID);
 
             try {
                 PreparedStatement ps2 = Main.db.prepareStatement("SELECT WordName FROM Words WHERE WordID = ?");
@@ -94,12 +92,13 @@ public class Words {
 
                 if (results.next()) {
                     randomWord = results.getString(1);
-                } System.out.println("Random word is " + randomWord);
+                }
+
             } catch (Exception exception) {
                 System.out.println("Database error: " + exception.getMessage());
                 return "{\"Error\": \"Unable to get random word, please see server console for more info.\"}";
             }
-        }
+        } System.out.println("Random word is " + randomWord);
         return "{\"word\": \"" + randomWord + "\"}";
     }
 
@@ -125,7 +124,6 @@ public class Words {
     @Path("update")
 
     public String WordsUpdate(@FormDataParam("WordID") String WordID, @FormDataParam("WordName") String WordName) {
-
         try {
             System.out.println("Invoked Words.WordsUpdate/update WordID=" + WordID);
             PreparedStatement ps = Main.db.prepareStatement("UPDATE Words SET WordName = ? WHERE WordID = ?");

@@ -55,7 +55,6 @@ public class Client {
     }
 
     private static byte[] getFile(String filename) {
-
         try {
             File file = new File("resources/" + filename);
             byte[] fileData = new byte[(int) file.length()];
@@ -66,7 +65,6 @@ public class Client {
             return fileData;
         } catch (IOException ioe) {
             System.out.println("File IO error: " + ioe.getMessage());
-        }
-        return null;
+        } return null;
     }
 }

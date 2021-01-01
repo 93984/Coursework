@@ -193,7 +193,7 @@ public class Users {
             statement.setString(1, Token);
             ResultSet resultSet = statement.executeQuery();
             System.out.println("userID is " + resultSet.getInt("UserID"));
-            return resultSet.getInt("UserID");  //Retrieve by column name  (should really test we only get one result back!)
+            return resultSet.getInt("UserID");
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return -1;  //rogue value indicating error

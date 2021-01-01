@@ -1,7 +1,7 @@
 "use strict";
 function getUsersList() {
     debugger;
-    console.log("Invoked getUsersList()");                                                                            //console.log your BFF for debugging client side - also use debugger statement
+    console.log("Invoked getUsersList()");                                                                              //console.log your BFF for debugging client side - also use debugger statement
 
     const url = "/users/list/";    		                                                                                // API method on web server will be in Users class, method list
     fetch(url, {
@@ -29,11 +29,11 @@ function formatUsersList(myJSONArray){
 function getUser() {
     console.log("Invoked getUser()");                                                                                   //console.log your BFF for debugging client side
 
-    const userID = document.getElementById("userID").value;                                                             //get the UserId from the HTML element with id=userID
+    const userID = document.getElementById("userID").value;                                                    //get the UserId from the HTML element with id=userID
     //let userID = 1; 			                                                                                        //You could hard code it if you have problems
     //debugger;				                                                                                            //debugger statement to allow you to step through the code in console dev F12
     const url = "/users/getUser/";                                                                                      // API method on webserver
-    fetch(url + userID, {                                                                                               // userID as a path parameter
+    fetch(url + userID, {                                                                                      // userID as a path parameter
         method: "GET",
     }).then(response => {
         return response.json();                                                                                         //return response to JSON
@@ -41,12 +41,12 @@ function getUser() {
         if (response.hasOwnProperty("Error")) {                                                                      //checks if response from server has an "Error"
             alert(JSON.stringify(response));                                                                            // if it does, convert JSON object to string and alert
         } else {
-            document.getElementById("DisplayOneUser").innerHTML = response.userID + " " + response.userName;  //output data
+            document.getElementById("DisplayOneUser").innerHTML = response.userID + " " + response.userName;   //output data
         }
     });
 }
-                                                                                                                        /*Add the form elements to index.html inside <body tags*/
-                                                                                                                        /*addUser function to add a user to the database*/
+                                                                                                                        //Add the form elements to index.html inside <body tags
+                                                                                                                        //addUser function to add a user to the database
 function addUser() {
     console.log("Invoked AddUser()");
 
@@ -61,12 +61,12 @@ function addUser() {
         if (response.hasOwnProperty("Error")) {
             alert(JSON.stringify(response));
         } else {
-            window.open("/client/welcome.html", "_self");                                                               //URL replaces the current page.  Create a new html file
+            window.open("/welcome.html", "_self");                                                            //URL replaces the current page.  Create a new html file
         }                                                                                                               //in the client folder called welcome.html
     });
 }
-                                                                                                                        /*Add the form elements to index.html inside <body tags*
-                                                                                                                        /*If you want two bits of data but there is no form, you can create a form and stick the values in eg:*/
+                                                                                                                        //Add the form elements to index.html inside <body tags
+                                                                                                                        //If you want two bits of data but there is no form, you can create a form and stick the values in eg://
 function postWeightAdd() {
     console.log("invoked postWeightAdd()");
 
@@ -83,7 +83,7 @@ function postWeightAdd() {
     }).then(response => {
         return response.json()                                                                                          //method returns a promise, have to return from here to get text
     }).then(response => {
-        if (response.hasOwnProperty("Error")) {                                                                         //checks if response from server has a key "Error"
+        if (response.hasOwnProperty("Error")) {                                                                      //checks if response from server has a key "Error"
             alert(JSON.stringify(response));                                                                            // if it does, convert JSON object to string and alert
         } else {
             getWeightList();
@@ -101,15 +101,15 @@ function UsersLogin() {
         method: "POST",
         body: formData,
     }).then(response => {
-        return response.json();                 //now return that promise to JSON
+        return response.json();                                                                                         //now return that promise to JSON
     }).then(response => {
         if (response.hasOwnProperty("Error")) {
-            alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
+            alert(JSON.stringify(response));                                                                            // if it does, convert JSON object to string and alert
         } else {
             Cookies.set("Token", response.Token);
             Cookies.set("UserName", response.UserName);
 
-            window.open("index.html", "_self");       //open index.html in same tab
+            window.open("index.html", "_self");                                                               //open index.html in same tab
         }
     });
 }
@@ -122,15 +122,15 @@ function UsersLogout() {
     fetch(url, {
         method: "POST"
     }).then(response => {
-        return response.json();                 //now return that promise to JSON
+        return response.json();                                                                                         //now return that promise to JSON
     }).then(response => {
         if (response.hasOwnProperty("Error")) {
-            alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
+            alert(JSON.stringify(response));                                                                            // if it does, convert JSON object to string and alert
         } else {
-            Cookies.remove("Token", response.Token);    //UserName and Token are removed
+            Cookies.remove("Token", response.Token);                                                                    //UserName and Token are removed
             Cookies.remove("UserName", response.UserName);
 
-            window.open("index.html", "_self");       //open index.html in same tab
+            window.open("index.html", "_self");                                                               //open index.html in same tab
         }
     });
 }

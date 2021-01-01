@@ -93,7 +93,7 @@ function changeScore() {
 }
 
 function returnToMenu() {
-    window.location.href="/client/index.html";
+    window.location.href="/index.html";
 }
 
 function reachedZero (scoreTotal) {
